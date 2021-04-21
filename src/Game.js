@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import SingleCard from "./SingleCard";
-import { data } from "./Data/cardData";
-
+import { useGlobalContext } from "./context";
 function Game() {
+  const { cardData } = useGlobalContext();
+
   return (
-    <section>
-      <h2>Card Game</h2>
-      <div>
-        {data.map((card) => {
-          return <h4>{card.id}</h4>;
+    <section className="main-body">
+      <div className="game">
+        {cardData.map((card) => {
+          return <SingleCard key={card.id} {...card} />;
         })}
       </div>
     </section>
