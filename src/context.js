@@ -14,6 +14,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
   const flipCard = ({ id, name }) => {
     dispatch({ type: "FLIP", payload: { id, name } });
   };
@@ -24,9 +25,10 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (state.firstCard.name !== state.secondCard.name) {
+      dispatch({ type: "LOCK_BOARD" });
       setTimeout(() => {
         dispatch({ type: "MATCH_CARDS", payload: data });
-      }, 500);
+      }, 800);
     } else dispatch({ type: "MATCH_CARDS", payload: data });
   }, [state.secondCard]);
 

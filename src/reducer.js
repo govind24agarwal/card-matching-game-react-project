@@ -4,6 +4,8 @@ const reducer = (state, action) => {
   }
 
   if (action.type === "FLIP") {
+    if (state.lockBoard) return state;
+
     if (!state.hasFlipped) {
       return {
         ...state,
@@ -57,8 +59,13 @@ const reducer = (state, action) => {
           }
           return card;
         }),
+        lockBoard: false,
       };
     }
+  }
+
+  if (action.type === "LOCK_BOARD") {
+    return { ...state, lockBoard: true };
   }
   return state;
 };
