@@ -3,8 +3,8 @@ import reducer from "./reducer";
 import { data } from "./Data/cardData";
 
 const initialState = {
-  firstCard: -1,
-  secondCard: -1,
+  firstCard: { id: -1, name: "" },
+  secondCard: { id: -1, name: "" },
   hasFlipped: false,
   cardData: [],
   lockBoard: false,

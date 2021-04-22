@@ -5,13 +5,13 @@ const reducer = (state, action) => {
 
   if (action.type === "FLIP") {
     if (state.lockBoard) return state;
+    if (state.firstCard.id === action.payload.id) return state;
 
     if (!state.hasFlipped) {
       return {
         ...state,
         cardData: state.cardData.map((card) => {
-          if (card.id === action.payload.id)
-            return { ...card, flip: !card.flip };
+          if (card.id === action.payload.id) return { ...card, flip: true };
           return card;
         }),
         firstCard: action.payload,
@@ -21,8 +21,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cardData: state.cardData.map((card) => {
-          if (card.id === action.payload.id)
-            return { ...card, flip: !card.flip };
+          if (card.id === action.payload.id) return { ...card, flip: true };
           return card;
         }),
         secondCard: action.payload,
@@ -44,6 +43,8 @@ const reducer = (state, action) => {
           }
           return card;
         }),
+        // firstCard: { id: -1, name: "" },
+        // secondCard: { id: -1, name: "" },
       };
     }
 
@@ -60,6 +61,8 @@ const reducer = (state, action) => {
           return card;
         }),
         lockBoard: false,
+        firstCard: { id: -1, name: "" },
+        secondCard: { id: -1, name: "" },
       };
     }
   }
