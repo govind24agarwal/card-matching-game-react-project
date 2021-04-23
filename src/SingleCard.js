@@ -9,10 +9,8 @@ function SingleCard({ id, image, flip, name, matched }) {
       className={`single-card ${flip && "flip"}`}
       onClick={!matched ? () => flipCard({ id, name }) : () => {}}
     >
-      <div className="images">
-        <img className="front-image" src={image} alt="card-front" />
-        <img className="back-image" src={backPhoto} alt="card-back" />
-      </div>
+      <img className="front-image" src={image} alt="card-front" />
+      <img className="back-image" src={backPhoto} alt="card-back" />
     </article>
   );
 }

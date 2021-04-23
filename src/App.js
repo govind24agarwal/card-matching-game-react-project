@@ -4,7 +4,7 @@ import { AppProvider } from "./context";
 function App() {
   return (
     <AppProvider>
-      <Game />;
+      <Game />
     </AppProvider>
   );
 }
